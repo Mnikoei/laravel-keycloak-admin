@@ -35,19 +35,19 @@ from Client Roles list and assign realm-admin to client
 # available methods : 
 
 
-package has provided services as below :
+Package has provided services as below :
 
-user
-role
-client
-clientRole
-
-
+* user
+* role
+* client
+* clientRole
 
 
-all api`s are in config\keycloakAdmin.php
+
+
+All api`s are in config\keycloakAdmin.php
  
-for every api just call api name as method on related service .
+For every api just call api name as method on related service .
 
 
 
