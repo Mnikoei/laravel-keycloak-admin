@@ -5,19 +5,19 @@
 Add these environment variables to your .env :
 
 
-
+```
 KEYCLOAK_BASE_URL=http://keycloak-domain.example/auth
 
 KEYCLOAK_REALM=                
 
-KEYCLOAK_REALM_PUBLIC_KEY=     // realm settings -> keys  
+KEYCLOAK_REALM_PUBLIC_KEY=     # realm settings -> keys 
 
 KEYCLOAK_CLIENT_ID=            
 
-KEYCLOAK_CLIENT_SECRET=       // clients -> your_client -> credentials
+KEYCLOAK_CLIENT_SECRET=        # clients -> your_client -> credentials 
 
 KEYCLOAK_ADMIN_BASE_URL=${KEYCLOAK_BASE_URL}/admin/realms/${KEYCLOAK_REALM} 
-
+```
 
 
 
