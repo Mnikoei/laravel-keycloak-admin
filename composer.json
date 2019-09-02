@@ -1,0 +1,27 @@
+{
+    "name": "mnikoei/laravel-keycloak-admin",
+    "description": "This package supports Keycloak admin client api`s",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mnikoei",
+            "email": "mohsen.nikoei@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload" : {
+        "psr-4" : {
+            "Mnikoei\\": "src/"
+        }
+    },
+    "extra" : {
+        "laravel" : {
+            "providers" : [
+                "Mnikoei\\KeycloakAdminServiceProvider"
+            ]
+        }
+    }
+}
