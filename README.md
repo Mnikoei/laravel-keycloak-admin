@@ -52,7 +52,7 @@ for every api just call api name as method on related service .
 
 
 example:
-
+```php
 KeycloakAdmin::serviceName()->apiName($parameters)
 
 
@@ -88,6 +88,6 @@ keycloakAdmin::role()->get([
      'id' => 'role_id'
 
 ]);
-
+```
 
 All other api calls are same just need to see required parameters in https://www.keycloak.org/docs-api/7.0/rest-api/index.html
