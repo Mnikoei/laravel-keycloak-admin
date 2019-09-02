@@ -2,7 +2,7 @@
 
 
 
-add these environment variables to your .env :
+Add these environment variables to your .env :
 
 
 
@@ -21,18 +21,18 @@ KEYCLOAK_ADMIN_BASE_URL=${KEYCLOAK_BASE_URL}/admin/realms/${KEYCLOAK_REALM}
 
 
 
-Enable realm managment :
+# Enable realm managment
 
-go to clients -> your_client -> Service Account Roles 
+Go to clients -> your_client -> Service Account then select realm-managment
 
-from Client Roles list select realm-managment and assign realm-admin to client
-
-
+from Client Roles list and assign realm-admin to client
 
 
 
 
-available methods : 
+
+
+# available methods : 
 
 
 package has provided services as below :
