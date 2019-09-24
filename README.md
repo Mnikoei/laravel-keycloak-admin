@@ -51,7 +51,7 @@ Package has provided services as below :
 
 
 
-All api's are in config\keycloakAdmin.php
+All api's are in ```config\keycloakAdmin.php```
  
 For every api just call api name as method on related service .
 
