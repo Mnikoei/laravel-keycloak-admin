@@ -29,7 +29,7 @@ KEYCLOAK_ADMIN_BASE_URL=${KEYCLOAK_BASE_URL}/admin/realms/${KEYCLOAK_REALM}
 
 # Enable realm managment
 
-Go to clients -> your_client -> Service Account then select realm-managment
+Go to ``clients -> your_client -> Service Account then select realm-managment``
 
 from Client Roles list and assign realm-admin to client
 
