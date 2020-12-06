@@ -8,86 +8,37 @@ use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Arr;
 
 
-class Client
+class Client extends Service
 {
-
-    use HasApi;
-
-    /*
-     * Api uri's
+    /**
+     * Client constructor.
+     * @param ClientAuthService $auth
+     * @param ClientInterface $http
      */
-    protected $api = [];
+    public function __construct(ClientAuthService $auth , ClientInterface $http)
+    {
+        parent::__construct($auth, $http);
 
-    /*
-     * Http client
-     */
-    protected $http;
-
-    /*
-     * Client authorization service
-     */
-    protected $auth;
-
-
-    function __construct(ClientAuthService $auth , ClientInterface $http) {
-
-        $this->auth = $auth;
-        $this->http = $http;
         $this->api = config('keycloakAdmin.api.client');
-
     }
-
-
-    public function __call($api , $args)
-    {
-
-        $args = Arr::collapse($args);
-
-        list($url , $method) = $this->getApi($api , $args);
-
-        $response = $this
-            ->http
-            ->request($method , $url, $this->createOptions($args));
-
-        return $this->response($response);
-
-    }
-
-
-    public function getByClientId($client_id)
-    {
-          $filtered = array_filter( $this->all() , function ($client) use ($client_id){
-              return $client['clientId'] === $client_id ;
-          });
-
-          return filled($filtered)
-              ? array_first($filtered)
-              : null ;
-    }
-
 
     /**
-     * Creates guzzle http clinet options
-     * @param array|null $params
-     * @return array
+     * @param $clientId
+     * @return mixed|null
      */
-
-    public function createOptions(array $params = null) : array
+    public function getByClientId($clientId)
     {
-        return  [
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer '.$this->auth->getToken()
-            ],
-            'json' => $params['body'] ?? null,
-        ];
+        $clients = Arr::where($this->all(), function ($client) use ($clientId){
+            return $client['clientId'] === $clientId ;
+        });
+
+        return Arr::first($clients);
     }
 
-
     /**
-     * return appropriate response
+     * @param $response
+     * @return bool
      */
-
     public function response($response)
     {
         if (!empty( $location = $response->getHeader('location') )){
@@ -99,8 +50,6 @@ class Client
             ]);
         }
 
-        return json_decode($response->getBody()->getContents() , true) ?: true ;
+        return json_decode($response->getBody()->getContents() , true) ?: true;
     }
-
-
 }

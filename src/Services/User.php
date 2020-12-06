@@ -7,75 +7,13 @@ use Mnikoei\Services\Traits\HasApi;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Arr;
 
-class User
+class User extends Service
 {
-
-    use HasApi;
-
-   /*
-    * Api uri's
-    */
-    protected $api = [];
-
-    /*
-     * Http client
-     */
-    protected $http;
-
-    /*
-     * Client authorization service
-     */
-    protected $auth;
-
-
-    function __construct(ClientAuthService $auth , ClientInterface $http) {
-
-        $this->auth = $auth;
-        $this->http = $http;
+    public function __construct(ClientAuthService $auth , ClientInterface $http)
+    {
+        parent::__construct($auth, $http);
         $this->api = config('keycloakAdmin.api.user');
-
     }
-
-
-    public function __call($api , $args)
-    {
-
-        $args = Arr::collapse($args);
-
-        list($url , $method) = $this->getApi($api , $args);
-
-        $response = $this
-            ->http
-            ->request($method , $url, $this->createOptions($args));
-
-        return $this->response($response);
-
-    }
-
-
-
-    /**
-     * Creates guzzle http clinet options
-     * @param array|null $params
-     * @return array
-     */
-
-    public function createOptions(array $params = null) : array
-    {
-          return  [
-                'headers' => [
-                      'Content-Type' => 'application/json',
-                      'Authorization' => 'Bearer '.$this->auth->getToken()
-                ],
-                'json' => $params['body'] ?? null,
-
-          ];
-    }
-
-
-    /**
-     * return appropriate response
-     */
 
     public function response($response)
     {
@@ -90,6 +28,4 @@ class User
 
         return json_decode($response->getBody()->getContents() , true) ?: true ;
     }
-
-
 }

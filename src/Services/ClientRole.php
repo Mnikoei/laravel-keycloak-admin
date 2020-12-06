@@ -8,75 +8,25 @@ use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Arr;
 
 
-class ClientRole
+class ClientRole extends Service
 {
 
-    use HasApi;
-
-    /*
-     * Api uri's
+    /**
+     * ClientRole constructor.
+     * @param ClientAuthService $auth
+     * @param ClientInterface $http
      */
-    protected $api = [];
+    function __construct(ClientAuthService $auth , ClientInterface $http)
+    {
+        parent::__construct($auth, $http);
 
-    /*
-     * Http client
-     */
-    protected $http;
-
-    /*
-     * Client authorization service
-     */
-    protected $auth;
-
-
-    function __construct(ClientAuthService $auth , ClientInterface $http) {
-
-        $this->auth = $auth;
-        $this->http = $http;
         $this->api = config('keycloakAdmin.api.client_roles');
-
     }
-
-
-    public function __call($api , $args)
-    {
-
-        $args = Arr::collapse($args);
-
-        list($url , $method) = $this->getApi($api , $args);
-
-        $response = $this
-            ->http
-            ->request($method , $url, $this->createOptions($args));
-
-        return $this->response($response);
-
-    }
-
-
 
     /**
-     * Creates guzzle http clinet options
-     * @param array|null $params
-     * @return array
+     * @param $response
+     * @return bool
      */
-
-    public function createOptions(array $params = null) : array
-    {
-        return  [
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer '.$this->auth->getToken()
-            ],
-            'json' => $params['body'] ?? null,
-        ];
-    }
-
-
-    /**
-     * return appropriate response
-     */
-
     public function response($response)
     {
         if (!empty( $location = $response->getHeader('location') )){
@@ -88,8 +38,6 @@ class ClientRole
             ]);
         }
 
-        return json_decode($response->getBody()->getContents() , true) ?: true ;
+        return json_decode($response->getBody()->getContents() , true) ?: true;
     }
-
-
 }

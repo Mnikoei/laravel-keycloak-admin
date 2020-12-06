@@ -7,88 +7,34 @@ use Mnikoei\Services\Traits\HasApi;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Arr;
 
-class Role
+class Role extends Service
 {
-
-    use HasApi;
-
-    /*
-     * Api uri's
+    /**
+     * Role constructor.
+     * @param ClientAuthService $auth
+     * @param ClientInterface $http
      */
-    protected $api = [];
-
-    /*
-     * Http client
-     */
-    protected $http;
-
-    /*
-     * Client authorization service
-     */
-    protected $auth;
-
-
-    function __construct(ClientAuthService $auth , ClientInterface $http) {
-
-        $this->auth = $auth;
-        $this->http = $http;
+    public function __construct(ClientAuthService $auth , ClientInterface $http)
+    {
+        parent::__construct($auth, $http);
         $this->api = config('keycloakAdmin.api.role');
-
     }
-
-
-    public function __call($api , $args)
-    {
-
-        $args = Arr::collapse($args);
-
-        list($url , $method) = $this->getApi($api , $args);
-
-        $response = $this
-            ->http
-            ->request($method , $url, $this->createOptions($args));
-
-        return $this->response($response);
-
-    }
-
-
 
     /**
-     * Creates guzzle http clinet options
-     * @param array|null $params
-     * @return array
+     * @param $response
+     * @return bool
      */
-
-    public function createOptions(array $params = null) : array
-    {
-        return  [
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer '.$this->auth->getToken()
-            ],
-            'json' => $params['body'] ?? null,
-        ];
-    }
-
-
-    /**
-     * return appropriate response
-     */
-
     public function response($response)
     {
-        if (!empty( $location = $response->getHeader('location') )){
+        if (! empty($location = $response->getHeader('location'))){
 
             $url = current($location) ;
 
             return $this->getByName([
-                'role' => substr( $url , strrpos( $url , '/') + 1 )
+                'role' => substr($url,strrpos($url, '/') + 1)
             ]);
         }
 
-        return json_decode($response->getBody()->getContents() , true) ?: true ;
+        return json_decode($response->getBody()->getContents(), true) ?: true;
     }
-
-
 }

@@ -2,7 +2,7 @@
 
 namespace Mnikoei;
 
-use Mnikoei\Services\AdminService;
+use Mnikoei\AdminService;
 use Illuminate\Support\ServiceProvider;
 
 class KeycloakAdminServiceProvider extends ServiceProvider
