@@ -1,10 +1,16 @@
-# Installtion
+### Installtion
 
 ```
 composer require mnikoei/laravel-keycloak-admin
 ```
 
-# laravel-keycloak-admin
+### Copy the package config to your local config with the publish command:
+
+```shell
+php artisan vendor:publish --provider="Mnikoei\KeycloakAdminServiceProvider"
+```
+
+#### laravel-keycloak-admin
 
 
 
@@ -27,7 +33,7 @@ KEYCLOAK_ADMIN_BASE_URL=${KEYCLOAK_BASE_URL}/admin/realms/${KEYCLOAK_REALM}
 
 
 
-# Enable realm managment
+#### Enable realm managment
 
 Go to ```clients -> your_client -> Service Account``` then select realm-managment
 
@@ -38,10 +44,10 @@ from Client Roles list and assign realm-admin to client.
 
 
 
-# available methods : 
+#### Available methods : 
 
 
-Package has provided services as below :
+Package has provided services as below:
 
 * user
 * role
@@ -51,13 +57,13 @@ Package has provided services as below :
 
 
 
-All api's are in ```config\keycloakAdmin.php```
+All api's are decleared in ```config\keycloakAdmin.php```
  
-For every api just call api name as method on related service .
+For every api just needs call api name as method on related service .
 
 
 
-example:
+Example:
 ```php
 KeycloakAdmin::serviceName()->apiName($parameters)
 
@@ -96,4 +102,4 @@ keycloakAdmin::role()->get([
 ]);
 ```
 
-All other api calls are same as examples just need to see required parameters for every api in https://www.keycloak.org/docs-api/7.0/rest-api/index.html
+All other api calls are same as examples just needs to provide required parameters as described in https://www.keycloak.org/docs-api/7.0/rest-api/index.html
