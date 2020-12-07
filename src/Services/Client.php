@@ -3,10 +3,8 @@
 namespace Mnikoei\Services;
 
 use Mnikoei\Auth\ClientAuthService;
-use Mnikoei\Services\Traits\HasApi;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Arr;
-
 
 class Client extends Service
 {
