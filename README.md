@@ -102,4 +102,4 @@ keycloakAdmin::role()->get([
 ]);
 ```
 
-All other api calls are same as examples just need to see required parameters for every api in https://www.keycloak.org/docs-api/7.0/rest-api/index.html
+All other api calls are same as examples just needs to provide required parameters as described in https://www.keycloak.org/docs-api/7.0/rest-api/index.html
