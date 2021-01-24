@@ -2,7 +2,7 @@
     "name": "mnikoei/laravel-keycloak-admin",
     "description": "This package supports Keycloak admin client api`s",
     "require": {
-        "guzzlehttp/guzzle": "^7.0"
+        "guzzlehttp/guzzle": "*"
     },
     "license": "MIT",
     "authors": [
