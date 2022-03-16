@@ -7,11 +7,15 @@
     "license": "MIT",
     "authors": [
         {
+            "name": "mnikoei",
+            "email": "mohsen.nikoei@gmail.com"
+        },
+        {
             "name": "marionassef",
             "email": "developer.mario.nassef@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "autoload" : {
         "psr-4" : {
             "marionassef\\": "src/"
