@@ -11,7 +11,7 @@
             "email": "developer.mario.nassef@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload" : {
         "psr-4" : {
             "marionassef\\": "src/"
