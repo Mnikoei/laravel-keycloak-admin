@@ -70,7 +70,9 @@ abstract class Service
         $api = $this->api[$apiName]['api'];
 
         foreach($values as $name => $value) {
-            $api = str_replace('{'.$name.'}', $value, $api);
+            if (is_string($value)) {
+                $api = str_replace('{'.$name.'}', $value, $api);
+            }
         }
 
         if (isset($values['query'])){
