@@ -7,7 +7,7 @@ composer require marionassef/laravel-keycloak-admin
 ### Copy the package config to your local config with the publish command:
 
 ```shell
-php artisan vendor:publish --provider="Mnikoei\KeycloakAdminServiceProvider"
+php artisan vendor:publish --provider="marionassef\KeycloakAdminServiceProvider"
 ```
 
 #### laravel-keycloak-admin

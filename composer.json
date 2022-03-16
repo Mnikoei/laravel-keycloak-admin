@@ -1,5 +1,5 @@
 {
-    "name": "mnikoei/laravel-keycloak-admin",
+    "name": "marionassef/laravel-keycloak-admin",
     "description": "This package supports Keycloak admin client api`s",
     "require": {
         "guzzlehttp/guzzle": "*"
@@ -7,8 +7,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "mnikoei",
-            "email": "mohsen.nikoei@gmail.com"
+            "name": "marionassef",
+            "email": "developer.mario.nassef@gmail.com"
         }
     ],
     "minimum-stability": "dev",
@@ -20,7 +20,7 @@
     "extra" : {
         "laravel" : {
             "providers" : [
-                "Mnikoei\\KeycloakAdminServiceProvider"
+                "marionassef\\KeycloakAdminServiceProvider"
             ]
         }
     }
