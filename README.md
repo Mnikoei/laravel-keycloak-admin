@@ -1,7 +1,7 @@
 ### Installtion
 
 ```
-composer require mnikoei/laravel-keycloak-admin
+composer require marionassef/laravel-keycloak-admin
 ```
 
 ### Copy the package config to your local config with the publish command:
