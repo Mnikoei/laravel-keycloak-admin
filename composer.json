@@ -14,7 +14,7 @@
     "minimum-stability": "dev",
     "autoload" : {
         "psr-4" : {
-            "Mnikoei\\": "src/"
+            "marionassef\\": "src/"
         }
     },
     "extra" : {
