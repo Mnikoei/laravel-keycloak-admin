@@ -4,6 +4,10 @@
     "require": {
         "guzzlehttp/guzzle": "*"
     },
+    "repositories": [{
+        "type": "vcs",
+        "url": "https://github.com/Mnikoei/laravel-keycloak-admin"
+    }],
     "license": "MIT",
     "authors": [
         {
